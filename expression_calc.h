@@ -52,9 +52,58 @@ long double calculate(struct dataStack *a) {
         else {
             long double a1 = popData(&tmp);
             long double a2 = popData(&tmp);
-            pushData(&tmp, 
+            pushData(&tmp, returnCalcAnswer(a->data[i], a2, a1));
         }
     }
+    return tmp.data[0];
+}
+
+long double parseCalc(char a[]) {
+    struct operatorStack ost;
+    struct dataStack dst;
+    	int index = 0;
+
+	while (index < strlen( a )) {
+		if (a[index] == ' ') {
+			index++;
+			continue;
+		}
+
+		else if (isOperator( a[index] ) == -1.0) {
+			pushData( &dst, getNextDouble( a, &index ) );
+			dst.aux[dst.top - 1] = 1;
+		}
+
+		else if (isOperator( a[index] ) != -1.0) {
+			if (isOperator( a[index] ) == 1127.0) {
+				pushOp( &ost, a[index] );
+			}
+			else if (isOperator( a[index] ) == 1126.0) {
+				while (topOp( &ost ) != '(') {
+					pushData( &dst, isOperator( popOp( &ost ) ) );
+					dst.aux[dst.top - 1] = 0;
+				}
+				popOp( &ost );
+			}
+			else if (ost.top == 0 || topOp( &ost ) == '(') pushOp( &ost, a[index] );
+			else if (precede( a[index] ) > precede( topOp( &ost ) )) pushOp( &ost, a[index] );
+			else {
+				while (ost.top != 0 && topOp( &ost ) != '(') {
+					pushData( &dst, isOperator( popOp( &ost ) ) );
+					dst.aux[dst.top - 1] = 0;
+				}
+				pushOp( &ost, a[index] );
+			}
+			index++;
+		}
+	}
+	while (ost.top != 0) {
+		pushData( &dst, isOperator( popOp( &ost ) ) );
+	}
+
+	long double ret = calculate( &dst );
+	// printf( "%Lg\n", ret );
+	return ret;
 }
 
 #endif
