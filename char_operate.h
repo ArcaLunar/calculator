@@ -9,47 +9,34 @@
 #define OP_LEFT_BRACE 6
 #define OP_RIGHT_BRACE 7
 
+#include <math.h>
+
 int isOperator( char c ) {
-    switch(c) {
-        case '+':
-            return OP_ADD;
-        case '-':
-            return OP_SUB;
-        case '*':
-            return OP_MUL;
-        case '/':
-            return OP_DIV;
-        case '^':
-            return OP_POW;
-        case '(':
-            return OP_LEFT_BRACE;
-        case ')':
-            return OP_RIGHT_BRACE;
+    if (c == '+') return OP_ADD;
+    else if (c == '-') return OP_SUB;
+    else if (c == '*') return OP_MUL;
+    else if (c == '/') return OP_DIV;
+    else if (c == '^') return OP_POW;
+    else if (c == ')') return OP_RIGHT_BRACE;
+    else if (c == '(') return OP_LEFT_BRACE;
+    else return -1;
+}
+
+long double returnCalcAnswer( long double c, long double a, long double b ) {
+    int op = (int) c;
+    if (op == OP_ADD) return a + b;
+    else if (op == OP_SUB) return a - b;
+    else if (op == OP_MUL) return a * b;
+    else if (op == OP_DIV) return a * 1.0 / b;
+    else if (op == OP_POW) {
+        return pow( a, (int)b );
     }
-    return -1;
 }
 
-long double returnCalcAnswer(char op, long double a, long double b) {
-    switch(isOperator(op)) {
-        case OP_ADD:
-            return a+b;
-        case OP_SUB:
-            return a-b;
-        case OP_MUL:
-            return a*b;
-        case OP_DIV:
-            return a/b;
-        case OP_POW:
-            long double ans = 1;
-            for(int i = 0; i < b; i++) ans *= a;
-            return ans;
-	}
-}
-
-int precede( char c ){
-    if(c == '+' || c == '-') return 1;
-    else if(c == '*' || c == '/') return 2;
-    else if(c == '^') return 3;
+int precede( char c ) {
+    if (c == '+' || c == '-') return 1;
+    else if (c == '*' || c == '/') return 2;
+    else if (c == '^') return 3;
 }
 
 #endif

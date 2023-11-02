@@ -3,6 +3,7 @@
 
 #include <string.h>
 #include <math.h>
+#include <stdio.h>
 
 #include "utils.h"
 #include "stack.h"
@@ -18,36 +19,43 @@ long double parseDouble(char a[]) {
     
     // Calculate integer part
     int index = 0;
-    while(index < index_of_decimal_point) ans = ans * multiplier + 1.0 * (a[index++] - '0'); 
-
+	while (index < index_of_decimal_point) {
+		ans = ans * multiplier + 1.0 * (a[index] - '0');
+		index++;
+	}
     // Calculate decimal part
     index = strlen(a) - 1;
     long double after_point = 0.0;
     multiplier = 0.1;
-    while(index > index_of_decimal_point) after_point = after_point * multiplier + 1.0 * (a[index--] - '0');
-    
-    ans += after_point;
-    return ans;
+	while (index > index_of_decimal_point) {
+		after_point = after_point * multiplier + 1.0 * (a[index] - '0');
+		index--;
+	}
+	ans += after_point * 0.1;
+	// printf("Transformed: %Lg\n", ans);
+	return ans;
 }
 
 long double getNextDouble(char a[], int* cur) {
     int index = 0;
     int i;
-    char target[MAXN];
-    clearArray(target, MAXN);
+    char targ[MAXN];
+    clearArray(targ, MAXN);
     for(i = *cur; i < strlen(a); i++) {
         if(a[i] == ' ') continue;
         if(!(a[i] >= '0' && a[i] <= '9' || a[i] == '.')) break;
-        target[index++] = a[i];
+        targ[index++] = a[i];
     }
-    *cur = i;
-    return parseDouble(target);
+	*cur = i;
+	// printf("Parsed: %s\n", targ);
+	return parseDouble( targ );
 }
 
 long double calculate(struct dataStack *a) {
     struct dataStack tmp;
-    initData(&tmp);
-    for(int i = 0; i < a->top; i++) {
+	initData( &tmp );
+	// showData(a);
+	for (int i = 0; i < a->top; i++) {
         if(a->aux[i] == 1) pushData(&tmp, a->data[i]);
         else {
             long double a1 = popData(&tmp);
@@ -60,20 +68,21 @@ long double calculate(struct dataStack *a) {
 
 long double parseCalc(char a[]) {
     struct operatorStack ost;
-    struct dataStack dst;
-    	int index = 0;
+	struct dataStack dst;
+	initOp( &ost );
+	initData( &dst );
+	int index = 0;
 
 	while (index < strlen( a )) {
+		// printf( "Works Well\n" );
 		if (a[index] == ' ') {
 			index++;
 			continue;
 		}
-
 		else if (isOperator( a[index] ) == -1) {
 			pushData( &dst, getNextDouble( a, &index ) );
 			dst.aux[dst.top - 1] = 1;
 		}
-
 		else if (isOperator( a[index] ) != -1) {
 			if (isOperator( a[index] ) == OP_LEFT_BRACE) {
 				pushOp( &ost, a[index] );

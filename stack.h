@@ -6,8 +6,6 @@ Implement a custom stack data structure.
 */
 
 #include <string.h>
-#include <stdio.h>
-#include <math.h>
 
 #define MAXN 10000
 
@@ -59,6 +57,10 @@ int emptyOp( struct operatorStack* a ) {
 // Determine whether the stack is empty.
 int emptyData( struct dataStack* a ) {
     return a->top;
+}
+void showData( struct dataStack* a ) {
+    for (int i = 0; i < a->top; i++) printf( "%Lg ", a->data[i] );
+    printf( "\n" );
 }
 
 #endif
