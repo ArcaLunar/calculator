@@ -3,9 +3,11 @@
 
 #include <string.h>
 #include <math.h>
+#include <stdio.h>
 
 #include "utils.h"
 #include "stack.h"
+#include "var_system.h"
 
 int findEq( char a[] ) {
 	for (int i = 0; i < strlen( a ); i++) {
@@ -19,8 +21,5 @@ int findCol( char a[] ) {
 	else return 0;
 }
 
-void replaceVar( char a[], char cp[] ) {
-	
-}
 
 #endif

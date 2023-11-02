@@ -29,7 +29,7 @@ long double returnCalcAnswer( long double c, long double a, long double b ) {
     else if (op == OP_MUL) return a * b;
     else if (op == OP_DIV) return a * 1.0 / b;
     else if (op == OP_POW) {
-        return pow( a, (int)b );
+        return pow( a, b );
     }
 }
 
@@ -37,6 +37,7 @@ int precede( char c ) {
     if (c == '+' || c == '-') return 1;
     else if (c == '*' || c == '/') return 2;
     else if (c == '^') return 3;
+    return -1;
 }
 
 #endif
