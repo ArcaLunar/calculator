@@ -5,13 +5,15 @@
 #include "replace_var.h"
 #include "var_system.h"
 
+#define COMMAND_MAX_LENGTH 1000
+
 int main() {
-	char a[1000];
+	char a[COMMAND_MAX_LENGTH];
 	struct Varsys arr;
 	initVar( &arr );
 
 	while (1) {
-		clearArray( a, 1000 );
+		clearArray( a, COMMAND_MAX_LENGTH );
 
 		char c;
 		int index = 0;

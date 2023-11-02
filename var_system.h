@@ -4,6 +4,7 @@
 #include <string.h>
 
 #define NAME_MAX_LENGTH 20
+#define VAR_MAX_STORAGE 50
 
 // Variable structure, stores the name and the value of the variable
 struct Var {
@@ -14,7 +15,7 @@ struct Var {
 // Variable system, by default, can store 50 variables. 
 // `size` is the number of variables stored.
 struct Varsys {
-	struct Var vars[50];
+	struct Var vars[VAR_MAX_STORAGE];
 	int size;
 };
 
@@ -32,7 +33,7 @@ int cmpstr( char a[], char b[] ) {
 
 // Initialize a variable system
 void initVar( struct Varsys* arr ) {
-	for (int i = 0; i < 50; i++) {
+	for (int i = 0; i < VAR_MAX_STORAGE; i++) {
 		clearArray( arr->vars[i].name, NAME_MAX_LENGTH );
 		arr->vars[i].datum = 0.0;
 	}

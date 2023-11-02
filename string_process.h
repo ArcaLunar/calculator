@@ -16,8 +16,8 @@ long double processString( char a[], struct Varsys* arr ) {
 	}
 	else {
 		// If yes, parse the variable name...
-		char curvar[2000];
-		clearArray( curvar, 2000 );
+		char curvar[NAME_MAX_LENGTH];
+		clearArray( curvar, NAME_MAX_LENGTH );
 
 		int indexCurVar = 0;
 		for (int i = 0; i < result; i++) {
