@@ -69,16 +69,16 @@ long double parseCalc(char a[]) {
 			continue;
 		}
 
-		else if (isOperator( a[index] ) == -1.0) {
+		else if (isOperator( a[index] ) == -1) {
 			pushData( &dst, getNextDouble( a, &index ) );
 			dst.aux[dst.top - 1] = 1;
 		}
 
-		else if (isOperator( a[index] ) != -1.0) {
-			if (isOperator( a[index] ) == 1127.0) {
+		else if (isOperator( a[index] ) != -1) {
+			if (isOperator( a[index] ) == OP_LEFT_BRACE) {
 				pushOp( &ost, a[index] );
 			}
-			else if (isOperator( a[index] ) == 1126.0) {
+			else if (isOperator( a[index] ) == OP_RIGHT_BRACE) {
 				while (topOp( &ost ) != '(') {
 					pushData( &dst, isOperator( popOp( &ost ) ) );
 					dst.aux[dst.top - 1] = 0;
