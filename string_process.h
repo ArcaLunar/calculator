@@ -7,14 +7,15 @@
 #include "utils.h"
 
 long double processString( char a[], struct Varsys* arr ) {
-	int result = findEq( a );
+	int result = findEq( a ); // Whether the string contains an assignment operation
 
 	long double ans;
 
-	if (result == -1) {
+	if (result == -1) { // If not, directly calculate the expression
 		ans = parseCalc( a, arr );
 	}
 	else {
+		// If yes, parse the variable name...
 		char curvar[2000];
 		clearArray( curvar, 2000 );
 
@@ -25,8 +26,8 @@ long double processString( char a[], struct Varsys* arr ) {
 			curvar[indexCurVar++] = a[i];
 		}
 
+		//  ...and calculate the expression on the right side of the assignment
 		ans = parseCalc( a + result + 1, arr );
-		//printf("%s: ", curvar);
 		reassign( arr, curvar, ans );
 	}
 	return ans;

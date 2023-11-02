@@ -5,16 +5,20 @@
 
 #define NAME_MAX_LENGTH 20
 
+// Variable structure, stores the name and the value of the variable
 struct Var {
 	char name[NAME_MAX_LENGTH];
 	long double datum;
 };
 
+// Variable system, by default, can store 50 variables. 
+// `size` is the number of variables stored.
 struct Varsys {
 	struct Var vars[50];
 	int size;
 };
 
+// Compare two strings and return 1 if they are equal, 0 if not
 int cmpstr( char a[], char b[] ) {
 	if (strlen( a ) != strlen( b )) return 0;
 	int l;
@@ -26,6 +30,7 @@ int cmpstr( char a[], char b[] ) {
 	return 1;
 }
 
+// Initialize a variable system
 void initVar( struct Varsys* arr ) {
 	for (int i = 0; i < 50; i++) {
 		clearArray( arr->vars[i].name, NAME_MAX_LENGTH );
@@ -34,8 +39,9 @@ void initVar( struct Varsys* arr ) {
 	arr->size = 0;
 }
 
+// Reassign a variable or assign a new variable if not exists
 void reassign( struct Varsys* arr, char a[], long double dat ) {
-	int assigned = 0;
+	int assigned = 0; // Whether the variable exists and is re-assigned
 	for (int i = 0; i < arr->size; i++) {
 		if (cmpstr( a, arr->vars[i].name ) == 1) {
 			arr->vars[i].datum = dat;
@@ -43,13 +49,14 @@ void reassign( struct Varsys* arr, char a[], long double dat ) {
 			break;
 		}
 	}
-	if (assigned == 0) {
+	if (assigned == 0) { // If not, assign a new variable
 		arr->vars[arr->size].datum = dat;
 		for (int i = 0; i < strlen( a ); i++) arr->vars[arr->size].name[i] = a[i];
 		arr->size++;
 	}
 }
 
+// Find the variable in the variable system with name `a[]` and return its value
 long double findVar( struct Varsys* arr, char a[] ) {
 	for (int i = 0; i < arr->size; i++) {
 		if (cmpstr( a, arr->vars[i].name ) == 1) return arr->vars[i].datum;
@@ -57,20 +64,5 @@ long double findVar( struct Varsys* arr, char a[] ) {
 	return 0.0;
 }
 
-int indexVar( char a[], int* cur, char v[] ) {
-	for (int i = *cur; i < strlen( a ); i++) {
-		int eq = 1;
-		for (int j = i; j < strlen( v ); j++) {
-			if (v[j - i] != a[j]) {
-				eq = 0;
-				break;
-			}
-		}
-		if (eq == 1) {
-			return i;
-		}
-	}
-	return -1;
-}
 
 #endif

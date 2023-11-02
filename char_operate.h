@@ -11,6 +11,7 @@
 
 #include <math.h>
 
+// Judge whether the character `c` is an operator
 int isOperator( char c ) {
     if (c == '+') return OP_ADD;
     else if (c == '-') return OP_SUB;
@@ -22,6 +23,7 @@ int isOperator( char c ) {
     else return -1;
 }
 
+// Calculate the expression with operator `c` and operands `a` and `b`
 long double returnCalcAnswer( long double c, long double a, long double b ) {
     int op = (int) c;
     if (op == OP_ADD) return a + b;
@@ -33,6 +35,7 @@ long double returnCalcAnswer( long double c, long double a, long double b ) {
     }
 }
 
+// Judge the precede level of operator `c`
 int precede( char c ) {
     if (c == '+' || c == '-') return 1;
     else if (c == '*' || c == '/') return 2;
