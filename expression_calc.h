@@ -104,7 +104,12 @@ long double parseCalc( char a[], struct Varsys* arr ) {
 			dst.aux[dst.top - 1] = 1; // ...and set the aux to 1, indicating that it is a number
 		}
 		else if (isOperator( a[index] ) != -1) { // If is operator...
-			if (isOperator( a[index] ) == OP_LEFT_BRACE) { // ...If is left brace, push to operator stack
+			if (isOperator( a[index] ) == OP_SUB && !(a[index - 1] >= '0' && a[index - 1] <= '9')) {
+				pushData( &dst, 0 );
+				dst.aux[dst.top - 1] = 1;
+				pushOp( &ost, '-' );
+			}
+			else if (isOperator( a[index] ) == OP_LEFT_BRACE) { // ...If is left brace, push to operator stack
 				pushOp( &ost, a[index] );
 			}
 			else if (isOperator( a[index] ) == OP_RIGHT_BRACE) { // ...If is right brace, pop all operators until left brace...

@@ -1,13 +1,13 @@
 #ifndef _CHAR_OPERATE_H_
 #define _CHAR_OPERATE_H_
 
-#define OP_ADD 1
-#define OP_SUB 2
-#define OP_MUL 3
-#define OP_DIV 4
-#define OP_POW 5
-#define OP_LEFT_BRACE 6
-#define OP_RIGHT_BRACE 7
+#define OP_ADD (int)'+'
+#define OP_SUB (int)'-'
+#define OP_MUL (int)'*'
+#define OP_DIV (int)'/'
+#define OP_POW (int)'^'
+#define OP_LEFT_BRACE (int)'('
+#define OP_RIGHT_BRACE (int)')'
 
 #include <math.h>
 
