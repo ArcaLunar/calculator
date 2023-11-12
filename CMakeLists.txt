@@ -1,0 +1,6 @@
+cmake_minimum_required(VERSION 3.15)
+project(calc)
+add_compile_options(-lm -std=c17)
+aux_source_directory(. DIR_SRCS)
+add_executable(calc ${DIR_SRCS})
+target_link_libraries(calc m)

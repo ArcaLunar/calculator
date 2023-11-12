@@ -5,8 +5,6 @@
 Implement a custom stack data structure.
 */
 
-#include <string.h>
-
 #define MAXN 10000
 
 // Stack of operators. Used to convert a expression into reverse Polish expression.
@@ -23,44 +21,32 @@ struct dataStack {
 };
 
 // Initialization
-void initOp( struct operatorStack* a ) {
-    a->top = 0;
-}
+void initOp( struct operatorStack* );
+
 // Initialization
-void initData( struct dataStack* a ) {
-    a->top = 0;
-}
+void initData( struct dataStack* );
+
 // Pushes an operator b into the stack
-void pushOp( struct operatorStack* a, char b ) {
-    a->op[a->top++] = b;
-}
+void pushOp( struct operatorStack*, char );
+
 // Pop the top operator element
-char popOp( struct operatorStack* a ) {
-    return (*a).op[--(*a).top];
-}
+char popOp( struct operatorStack* );
+
 // Return the top operator element
-char topOp( struct operatorStack* a ) {
-    return a->op[a->top - 1];
-}
+char topOp( struct operatorStack* );
+
 // Push a number (or an operator) into stack.
-void pushData( struct dataStack* a, long double b ) {
-    a->data[a->top++] = b;
-}
+void pushData( struct dataStack*, long double );
+
 // Pop the top data element
-long double popData( struct dataStack* a ) {
-    return a->data[--a->top];
-}
+long double popData( struct dataStack* );
+
 // Determine whether the stack is empty.
-int emptyOp( struct operatorStack* a ) {
-    return a->top;
-}
+int emptyOp( struct operatorStack* );
+
 // Determine whether the stack is empty.
-int emptyData( struct dataStack* a ) {
-    return a->top;
-}
-void showData( struct dataStack* a ) {
-    for (int i = 0; i < a->top; i++) printf( "%Lg ", a->data[i] );
-    printf( "\n" );
-}
+int emptyData( struct dataStack* );
+
+void showData( struct dataStack* );
 
 #endif

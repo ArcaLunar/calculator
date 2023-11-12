@@ -1,0 +1,11 @@
+{
+	"files.associations": {
+		"array": "c",
+		"bitset": "c",
+		"string_view": "c",
+		"initializer_list": "c",
+		"utility": "c",
+		"string.h": "c"
+	},
+	"C_Cpp.default.compilerPath": "/usr/bin/clang"
+}

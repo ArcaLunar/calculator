@@ -1,0 +1,44 @@
+[
+{
+  "directory": "/mnt/d/CodeLibrary/oi/lab4/calculator/build",
+  "command": "/usr/bin/clang   -g -lm -std=c17 -o CMakeFiles/calc.dir/char_operate.c.o -c /mnt/d/CodeLibrary/oi/lab4/calculator/char_operate.c",
+  "file": "/mnt/d/CodeLibrary/oi/lab4/calculator/char_operate.c",
+  "output": "CMakeFiles/calc.dir/char_operate.c.o"
+},
+{
+  "directory": "/mnt/d/CodeLibrary/oi/lab4/calculator/build",
+  "command": "/usr/bin/clang   -g -lm -std=c17 -o CMakeFiles/calc.dir/expression_calc.c.o -c /mnt/d/CodeLibrary/oi/lab4/calculator/expression_calc.c",
+  "file": "/mnt/d/CodeLibrary/oi/lab4/calculator/expression_calc.c",
+  "output": "CMakeFiles/calc.dir/expression_calc.c.o"
+},
+{
+  "directory": "/mnt/d/CodeLibrary/oi/lab4/calculator/build",
+  "command": "/usr/bin/clang   -g -lm -std=c17 -o CMakeFiles/calc.dir/main.c.o -c /mnt/d/CodeLibrary/oi/lab4/calculator/main.c",
+  "file": "/mnt/d/CodeLibrary/oi/lab4/calculator/main.c",
+  "output": "CMakeFiles/calc.dir/main.c.o"
+},
+{
+  "directory": "/mnt/d/CodeLibrary/oi/lab4/calculator/build",
+  "command": "/usr/bin/clang   -g -lm -std=c17 -o CMakeFiles/calc.dir/stack.c.o -c /mnt/d/CodeLibrary/oi/lab4/calculator/stack.c",
+  "file": "/mnt/d/CodeLibrary/oi/lab4/calculator/stack.c",
+  "output": "CMakeFiles/calc.dir/stack.c.o"
+},
+{
+  "directory": "/mnt/d/CodeLibrary/oi/lab4/calculator/build",
+  "command": "/usr/bin/clang   -g -lm -std=c17 -o CMakeFiles/calc.dir/string_process.c.o -c /mnt/d/CodeLibrary/oi/lab4/calculator/string_process.c",
+  "file": "/mnt/d/CodeLibrary/oi/lab4/calculator/string_process.c",
+  "output": "CMakeFiles/calc.dir/string_process.c.o"
+},
+{
+  "directory": "/mnt/d/CodeLibrary/oi/lab4/calculator/build",
+  "command": "/usr/bin/clang   -g -lm -std=c17 -o CMakeFiles/calc.dir/utils.c.o -c /mnt/d/CodeLibrary/oi/lab4/calculator/utils.c",
+  "file": "/mnt/d/CodeLibrary/oi/lab4/calculator/utils.c",
+  "output": "CMakeFiles/calc.dir/utils.c.o"
+},
+{
+  "directory": "/mnt/d/CodeLibrary/oi/lab4/calculator/build",
+  "command": "/usr/bin/clang   -g -lm -std=c17 -o CMakeFiles/calc.dir/var_system.c.o -c /mnt/d/CodeLibrary/oi/lab4/calculator/var_system.c",
+  "file": "/mnt/d/CodeLibrary/oi/lab4/calculator/var_system.c",
+  "output": "CMakeFiles/calc.dir/var_system.c.o"
+}
+]

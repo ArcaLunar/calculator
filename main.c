@@ -1,9 +1,10 @@
 #include <stdio.h>
 #include <stdlib.h>
+
 #include "expression_calc.h"
 #include "string_process.h"
-#include "replace_var.h"
 #include "var_system.h"
+#include "utils.h"
 
 #define COMMAND_MAX_LENGTH 1000
 
@@ -25,7 +26,7 @@ int main() {
 		if (findCol( a ) != 0) {
 			processString( a, &arr );
 		}
-		else printf( "%Lf\n", processString( a, &arr ) );
+		else printf( "%Lg\n", processString( a, &arr ) );
 	}
 }
 

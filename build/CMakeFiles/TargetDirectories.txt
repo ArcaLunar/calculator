@@ -1,0 +1,3 @@
+/mnt/d/CodeLibrary/oi/lab4/calculator/build/CMakeFiles/calc.dir
+/mnt/d/CodeLibrary/oi/lab4/calculator/build/CMakeFiles/edit_cache.dir
+/mnt/d/CodeLibrary/oi/lab4/calculator/build/CMakeFiles/rebuild_cache.dir
