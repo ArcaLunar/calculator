@@ -10,6 +10,8 @@ int isOperator( char c ) {
     else if (c == '^') return OP_POW;
     else if (c == ')') return OP_RIGHT_BRACE;
     else if (c == '(') return OP_LEFT_BRACE;
+    else if (c == '_') return OP_NEG;
+    else if (c == '#') return OP_POS;
     else return -1;
 }
 
@@ -28,5 +30,6 @@ int precede( char c ) {
     if (c == '+' || c == '-') return 1;
     else if (c == '*' || c == '/') return 2;
     else if (c == '^') return 3;
+    else if (c == '_' || c == '#') return 4;
     return -1;
 }

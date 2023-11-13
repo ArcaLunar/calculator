@@ -13,10 +13,14 @@ Run in the terminal using `gcc main.c -o a -lm` and then `./a`
  - `/`: float division
  - `^`: power
  - `()`: braces
- - and **variable system** (variables must be **initialized** before using)
+ - and **variable system** (variables must be **initialized** before using, otherwise default 0)
 
 ## Updates
-### 2023.11
+### 2023.11.14
+
+Fix bugs when encountering bulks of braces
+
+### 2023.11.13
 
 Divide project into `.h`s and `.c`s, easier to maintain.
 

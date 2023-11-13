@@ -6,6 +6,8 @@
 #define OP_MUL (int)'*'
 #define OP_DIV (int)'/'
 #define OP_POW (int)'^'
+#define OP_NEG (int)'_'
+#define OP_POS (int)'#'
 #define OP_LEFT_BRACE (int)'('
 #define OP_RIGHT_BRACE (int)')'
 

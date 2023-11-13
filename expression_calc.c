@@ -68,6 +68,16 @@ long double calculate( struct dataStack* a ) {
 	for (int i = 0; i < a->top; i++) {
 		if (a->aux[i] == 1) pushData( &tmp, a->data[i] ); // If is number, push to stack
 		else { // If is operator, pop two numbers and calculate. And then push back to stack again
+			if (a->data[i] == OP_NEG) {
+				long double a1 = popData( &tmp );
+				pushData( &tmp, -a1 );
+				continue;
+			}
+			else if (a->data[i] == OP_POS) {
+				long double a1 = popData( &tmp );
+				pushData( &tmp, a1 );
+				continue;
+			}
 			long double a1 = popData( &tmp );
 			long double a2 = popData( &tmp );
 			pushData( &tmp, returnCalcAnswer( a->data[i], a2, a1 ) );
@@ -83,7 +93,7 @@ long double parseCalc( char a[], struct Varsys* arr ) {
 	initData( &dst );
 
 	int index = 0; // Current index of the string
-
+	int prev_is_operator = 1;
 	while (index < strlen( a )) {
 		if (a[index] == ' ' || a[index] == ';') { // Skip spaces and semicolons
 			index++;
@@ -92,14 +102,10 @@ long double parseCalc( char a[], struct Varsys* arr ) {
 		else if (isOperator( a[index] ) == -1) { // If is not operator, get next number or variable, and push to stack...
 			pushData( &dst, getNextDouble( a, &index, arr ) );
 			dst.aux[dst.top - 1] = 1; // ...and set the aux to 1, indicating that it is a number
+			prev_is_operator = 0;
 		}
 		else if (isOperator( a[index] ) != -1) { // If is operator...
-			if (isOperator( a[index] ) == OP_SUB && !((a[index-1]>='0' && a[index-1]<='9') || a[index-1]=='.' || (a[index-1]>='a' && a[index-1]<='z') || (a[index-1]>='A' && a[index-1]<='Z'))) {
-				pushData( &dst, 0 );
-				dst.aux[dst.top - 1] = 1;
-				pushOp( &ost, '-' );
-			}
-			else if (isOperator( a[index] ) == OP_LEFT_BRACE) { // ...If is left brace, push to operator stack
+			if (isOperator( a[index] ) == OP_LEFT_BRACE) { // ...If is left brace, push to operator stack
 				pushOp( &ost, a[index] );
 			}
 			else if (isOperator( a[index] ) == OP_RIGHT_BRACE) { // ...If is right brace, pop all operators until left brace...
@@ -109,17 +115,25 @@ long double parseCalc( char a[], struct Varsys* arr ) {
 				}
 				popOp( &ost ); // Pop out remaining left brace
 			}
-			else if (ost.top == 0 || topOp( &ost ) == '(') pushOp( &ost, a[index] );
-			// ...If is operator and operator stack is empty or top is left brace, push to operator stack
-			else if (precede( a[index] ) > precede( topOp( &ost ) )) pushOp( &ost, a[index] );
-			// ...If is operator and precedence is higher than top operator, push to operator stack
-			else { // ...If is operator and precedence is lower than top operator, pop all operators until precedence is higher...
+			else {
+				if (prev_is_operator == 1 && a[index] == '-') {
+					a[index] = '_'; // Indicate it is negative
+					dst.aux[dst.top - 1] = 0;
+				}
+				if (prev_is_operator == 1 && a[index] == '+') {
+					a[index] = '#'; // Indicate it is positive
+					dst.aux[dst.top - 1] = 0;
+				}
+				// ...If is operator and precedence is lower than top operator, pop all operators until precedence is higher...
 				//while (ost.top != 0 && topOp( &ost ) != '(') {
-				while (ost.top != 0 && precede( a[index] ) <= precede( topOp( &ost ) )) {
+				while (ost.top != 0 && precede( a[index] ) <= precede( topOp( &ost ) ) && topOp( &ost ) != '(') {
 					pushData( &dst, isOperator( popOp( &ost ) ) ); // ...and push them to data stack
 					dst.aux[dst.top - 1] = 0; // ...and set the aux to 0, indicating that it is an operator
 				}
 				pushOp( &ost, a[index] ); // Push the current operator to operator stack
+				// ...If is operator and operator stack is empty or top is left brace, push to operator stack
+				// ...If is operator and precedence is higher than top operator, push to operator stack
+				prev_is_operator = 1;
 			}
 			index++; // Increase the index by 1, processing next character
 		}

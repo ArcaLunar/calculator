@@ -66,8 +66,8 @@ CMakeFiles/calc.dir/expression_calc.c.o
  /usr/include/x86_64-linux-gnu/gnu/stubs-64.h
  /usr/include/x86_64-linux-gnu/gnu/stubs.h
  /usr/include/x86_64-linux-gnu/sys/cdefs.h
- /usr/lib/llvm-10/lib/clang/10.0.0/include/stdarg.h
- /usr/lib/llvm-10/lib/clang/10.0.0/include/stddef.h
+ /usr/lib/gcc/x86_64-linux-gnu/9/include/stdarg.h
+ /usr/lib/gcc/x86_64-linux-gnu/9/include/stddef.h
 
 CMakeFiles/calc.dir/main.c.o
  /mnt/d/CodeLibrary/oi/lab4/calculator/main.c
@@ -100,12 +100,13 @@ CMakeFiles/calc.dir/main.c.o
  /usr/include/x86_64-linux-gnu/gnu/stubs-64.h
  /usr/include/x86_64-linux-gnu/gnu/stubs.h
  /usr/include/x86_64-linux-gnu/sys/cdefs.h
- /usr/lib/llvm-10/lib/clang/10.0.0/include/stdarg.h
- /usr/lib/llvm-10/lib/clang/10.0.0/include/stddef.h
+ /usr/lib/gcc/x86_64-linux-gnu/9/include/stdarg.h
+ /usr/lib/gcc/x86_64-linux-gnu/9/include/stddef.h
 
 CMakeFiles/calc.dir/stack.c.o
  /mnt/d/CodeLibrary/oi/lab4/calculator/stack.c
  /mnt/d/CodeLibrary/oi/lab4/calculator/stack.h
+ /usr/include/stdc-predef.h
 
 CMakeFiles/calc.dir/string_process.c.o
  /mnt/d/CodeLibrary/oi/lab4/calculator/string_process.c
@@ -122,7 +123,7 @@ CMakeFiles/calc.dir/string_process.c.o
  /usr/include/x86_64-linux-gnu/gnu/stubs-64.h
  /usr/include/x86_64-linux-gnu/gnu/stubs.h
  /usr/include/x86_64-linux-gnu/sys/cdefs.h
- /usr/lib/llvm-10/lib/clang/10.0.0/include/stddef.h
+ /usr/lib/gcc/x86_64-linux-gnu/9/include/stddef.h
 
 CMakeFiles/calc.dir/utils.c.o
  /mnt/d/CodeLibrary/oi/lab4/calculator/utils.c
@@ -136,7 +137,7 @@ CMakeFiles/calc.dir/utils.c.o
  /usr/include/x86_64-linux-gnu/gnu/stubs-64.h
  /usr/include/x86_64-linux-gnu/gnu/stubs.h
  /usr/include/x86_64-linux-gnu/sys/cdefs.h
- /usr/lib/llvm-10/lib/clang/10.0.0/include/stddef.h
+ /usr/lib/gcc/x86_64-linux-gnu/9/include/stddef.h
 
 CMakeFiles/calc.dir/var_system.c.o
  /mnt/d/CodeLibrary/oi/lab4/calculator/var_system.c
@@ -151,5 +152,5 @@ CMakeFiles/calc.dir/var_system.c.o
  /usr/include/x86_64-linux-gnu/gnu/stubs-64.h
  /usr/include/x86_64-linux-gnu/gnu/stubs.h
  /usr/include/x86_64-linux-gnu/sys/cdefs.h
- /usr/lib/llvm-10/lib/clang/10.0.0/include/stddef.h
+ /usr/lib/gcc/x86_64-linux-gnu/9/include/stddef.h
 
