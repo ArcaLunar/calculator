@@ -94,7 +94,7 @@ long double parseCalc( char a[], struct Varsys* arr ) {
 			dst.aux[dst.top - 1] = 1; // ...and set the aux to 1, indicating that it is a number
 		}
 		else if (isOperator( a[index] ) != -1) { // If is operator...
-			if (isOperator( a[index] ) == OP_SUB && !(a[index - 1] >= '0' && a[index - 1] <= '9')) {
+			if (isOperator( a[index] ) == OP_SUB && !((a[index-1]>='0' && a[index-1]<='9') || a[index-1]=='.' || (a[index-1]>='a' && a[index-1]<='z') || (a[index-1]>='A' && a[index-1]<='Z'))) {
 				pushData( &dst, 0 );
 				dst.aux[dst.top - 1] = 1;
 				pushOp( &ost, '-' );
@@ -114,7 +114,8 @@ long double parseCalc( char a[], struct Varsys* arr ) {
 			else if (precede( a[index] ) > precede( topOp( &ost ) )) pushOp( &ost, a[index] );
 			// ...If is operator and precedence is higher than top operator, push to operator stack
 			else { // ...If is operator and precedence is lower than top operator, pop all operators until precedence is higher...
-				while (ost.top != 0 && topOp( &ost ) != '(') {
+				//while (ost.top != 0 && topOp( &ost ) != '(') {
+				while (ost.top != 0 && precede( a[index] ) <= precede( topOp( &ost ) )) {
 					pushData( &dst, isOperator( popOp( &ost ) ) ); // ...and push them to data stack
 					dst.aux[dst.top - 1] = 0; // ...and set the aux to 0, indicating that it is an operator
 				}
