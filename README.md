@@ -18,7 +18,7 @@ Run in the terminal using `gcc main.c -o a -lm` and then `./a`
 ## Updates
 ### 2023.11.14
 
-Fix bugs when encountering bulks of braces
+Fix bugs when encountering lots of braces
 
 Fix logic of identifying negative numbers
 
