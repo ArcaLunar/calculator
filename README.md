@@ -14,3 +14,14 @@ Run in the terminal using `gcc main.c -o a -lm` and then `./a`
  - `^`: power
  - `()`: braces
  - and **variable system** (variables must be **initialized** before using)
+
+## Updates
+### 2023.11
+
+Divide project into `.h`s and `.c`s, easier to maintain.
+
+Add CMake
+
+### 2023.10
+
+Fix bugs when encountering negative numbers.
