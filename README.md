@@ -4,7 +4,7 @@ A custom calculator which supports expression evaluations, and implements a simp
 ## How to use?
 Run in the terminal using `cmake --build .` and then `./calc`
 
-`>>>>>` is intended to mock Python interactive UI, which might be a little more user-friendly.
+`>>>>>` is intended to simulate Python interactive UI, which might be a little more user-friendly.
 
 ## Supported Operation
  - `+`: addition
