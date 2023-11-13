@@ -20,6 +20,8 @@ Run in the terminal using `gcc main.c -o a -lm` and then `./a`
 
 Fix bugs when encountering bulks of braces
 
+Fix logic of identifying negative numbers
+
 ### 2023.11.13
 
 Divide project into `.h`s and `.c`s, easier to maintain.
